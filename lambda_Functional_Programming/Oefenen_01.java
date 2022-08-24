@@ -1,6 +1,7 @@
-package lambdaOefenen_01;
+package lambda_Functional_Programming;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Oefenen_01 {
@@ -24,6 +25,9 @@ public class Oefenen_01 {
         tekrarsizTekElemanlarinkupleri(list);
         System.out.println();
         tekrarsizCiftlerinKareleriniToplayanMethod(list);
+        tekrarsizCiftlerinKupununCarpimi(list);
+        enBuyukDegeriBul(list);
+        enKucukDegeriBul(list);
 
     }
 
@@ -48,6 +52,24 @@ public class Oefenen_01 {
     public static void tekrarsizCiftlerinKareleriniToplayanMethod (List <Integer> list){
         Integer toplam =list.stream().distinct().filter(t->t%2==0).map(t->t*t).reduce(0,(t,u)->t+u);
         System.out.println("Toplam "+toplam);
+    }
+    //Vraag 6-) Tekrarsız çift elemanların küpünün çarpımını hesaplayan bir method oluşturun.
+    public static void tekrarsizCiftlerinKupununCarpimi (List <Integer> list){
+        Integer carpim =list.stream().distinct().filter(t->t%2==0).map(t->t*t*t).reduce(1,(t,u)->t*u);
+        System.out.println("Carpim :"+carpim);
+    }
+    //Vraag 7-) List elemanları arasından en büyük değeri bulan bir method oluşturun.
+    public static void enBuyukDegeriBul (List<Integer>list){
+        //1.yol
+        Integer max =list.stream().distinct().reduce(Integer.MIN_VALUE,(t,u)->t>u ? t:u);
+        //2.yol
+        Integer max2=list.stream().distinct().sorted().reduce(Integer.MIN_VALUE,(t,u)->u );
+        System.out.println("Maximum :" +max);
+    }
+    //Vraag 8-) List elemanları arasından en küçük değeri bulan bir method oluşturun.(2 Yol ile)
+    public static void enKucukDegeriBul (List<Integer>list){
+        Integer min=list.stream().distinct().sorted(Comparator.reverseOrder()).reduce(Integer.MAX_VALUE,(t,u)->u);
+        System.out.println("min = " + min);
     }
 
 
