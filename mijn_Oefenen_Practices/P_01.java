@@ -35,7 +35,7 @@ public class P_01 {
     // List elemanlarini alfabetik buyuk harf ve tekrarsiz print ediniz.
 
     public static void alfabetikBuyukHarfTekrarsizYazdir(List<Integer>list){
-        list.stream().
+        list.stream();
     }
 
 
